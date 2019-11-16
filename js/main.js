@@ -3363,7 +3363,7 @@ class V2C_CssEditor extends BDV2.reactComponent {
 
     componentDidMount() {
         // this.updateLineCount();
-        this.editor = ace.edit("bd-customcss-editor");
+        this.editor = ace.edit("bd-customcss-editor-detached");
         this.editor.setTheme("ace/theme/monokai");
         this.editor.session.setMode("ace/mode/css");
         this.editor.setShowPrintMargin(false);
@@ -3708,7 +3708,7 @@ class V2C_PluginCard extends BDV2.reactComponent {
                         BDV2.react.createElement("span", {className: "bda-name"}, name),
                         " v",
                         BDV2.react.createElement("span", {className: "bda-version"}, version),
-                        " by ",
+                        " par ",
                         BDV2.react.createElement("span", {className: "bda-author"}, author)
                     ),
                     BDV2.react.createElement("div", {className: "bda-controls"},
