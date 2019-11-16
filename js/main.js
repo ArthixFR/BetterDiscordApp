@@ -62,7 +62,7 @@
 (() => {
     let v2Loader = document.createElement("div");
     v2Loader.className = "bd-loaderv2";
-    v2Loader.title = "BandagedBD is loading...";
+    v2Loader.title = "Chargement de BandagedBD...";
     document.body.appendChild(v2Loader);
 })();
 
@@ -188,49 +188,49 @@ var bbdVersion = "0.2.17";
 var mainCore;
 
 var settings = {
-    "Custom css live update":     {id: "bda-css-0", info: "",                                                  implemented: true,  hidden: true,  cat: "core"},
-    "Custom css auto udpate":     {id: "bda-css-1", info: "",                                                  implemented: true,  hidden: true,  cat: "core"},
-    "BetterDiscord Blue":         {id: "bda-gs-b",  info: "Replace Discord blue with BD Blue",                 implemented: false,  hidden: false, cat: "core"},
+    "Live update du CSS personnalisé":     {id: "bda-css-0", info: "",                                             implemented: true,  hidden: true,  cat: "core"},
+    "MàJ auto du CSS personnalisé":     {id: "bda-css-1", info: "",                                                implemented: true,  hidden: true,  cat: "core"},
+    "BetterDiscord Bleu":         {id: "bda-gs-b",  info: "Remplace le logo Discord avec celui de BD",             implemented: false,  hidden: false, cat: "core"},
 
     /* Core */
     /* ====== */
-    "Public Servers":             {id: "bda-gs-1",  info: "Display public servers button",                     implemented: true,  hidden: false, cat: "core", category: "modules"},
-    "Minimal Mode":               {id: "bda-gs-2",  info: "Hide elements and reduce the size of elements.",    implemented: true,  hidden: false, cat: "core", category: "modules"},
-    "Voice Mode":                 {id: "bda-gs-4",  info: "Only show voice chat",                              implemented: true,  hidden: false, cat: "core", category: "modules"},
-    "Hide Channels":              {id: "bda-gs-3",  info: "Hide channels in minimal mode",                     implemented: true,  hidden: false, cat: "core", category: "modules"},
-    "Dark Mode":                  {id: "bda-gs-5",  info: "Make certain elements dark by default(wip)",        implemented: true,  hidden: false, cat: "core", category: "modules"},
-    "Voice Disconnect":           {id: "bda-dc-0",  info: "Disconnect from voice server when closing Discord", implemented: true,  hidden: false, cat: "core", category: "modules"},
-    "24 Hour Timestamps":         {id: "bda-gs-6",  info: "Replace 12hr timestamps with proper ones",          implemented: true,  hidden: false, cat: "core", category: "modules"},
-    "Coloured Text":              {id: "bda-gs-7",  info: "Make text colour the same as role colour",          implemented: true,  hidden: false, cat: "core", category: "modules"},
-    "Normalize Classes":          {id: "fork-ps-4", info: "Adds stable classes to elements to help themes. (e.g. adds .da-channels to .channels-Ie2l6A)", implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Serveurs publics":           {id: "bda-gs-1",  info: "Afficher le bouton des serveurs publics",               implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Mode minimal":               {id: "bda-gs-2",  info: "Cache des éléments et réduit la taille des éléments.",  implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Mode voix":                  {id: "bda-gs-4",  info: "Afficher seulement les canaux vocaux",                  implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Cacher les canaux":          {id: "bda-gs-3",  info: "Cache les canaux en mode minimal",                      implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Mode sombre":                {id: "bda-gs-5",  info: "Rend certains éléments foncés par défaut (W.I.P)",      implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Déconnexion vocale":         {id: "bda-dc-0",  info: "Se déconnecter automatiquement d'un canal vocal quand tu fermes Discord", implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Format 24 Heures":           {id: "bda-gs-6",  info: "Remplace le format 12 heures par le bon format",          implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Texte coloré":               {id: "bda-gs-7",  info: "Fait en sorte que la couleur du texte soit la même que la couleur du rôle",          implemented: true,  hidden: false, cat: "core", category: "modules"},
+    "Normaliser les classes CSS": {id: "fork-ps-4", info: "Ajoute une classe CSS stable aux éléments pour simplifier les thèmes. (par exemple: ajoute .da-channels à .channels-Ie2l6A)", implemented: true,  hidden: false, cat: "core", category: "modules"},
 
     /* Content */
-    "Content Error Modal":        {id: "fork-ps-1", info: "Shows a modal with plugin/theme errors", implemented: true,  hidden: false, cat: "core", category: "content manager"},
-    "Show Toasts":                {id: "fork-ps-2", info: "Shows a small notification for important information", implemented: true,  hidden: false, cat: "core", category: "content manager"},
-    "Scroll To Settings":         {id: "fork-ps-3", info: "Auto-scrolls to a plugin's settings when the button is clicked (only if out of view)", implemented: true,  hidden: false, cat: "core", category: "content manager"},
-    "Automatic Loading":          {id: "fork-ps-5", info: "Automatically loads, reloads, and unloads plugins and themes", implemented: true,  hidden: false, cat: "core", category: "content manager"},
+    "Fenêtre d'erreur":           {id: "fork-ps-1", info: "Affiche une fenêtre d'erreur si il y a un problème avec un plugin ou un thème", implemented: true,  hidden: false, cat: "core", category: "content manager"},
+    "Afficher les Toasts":        {id: "fork-ps-2", info: "Affiche une petite notification pour des informations importantes", implemented: true,  hidden: false, cat: "core", category: "content manager"},
+    "Défiler les paramètres":     {id: "fork-ps-3", info: "Défile automatiquement aux paramètres d'un plugin quand le bouton est cliqué (seulement si hors de vue)", implemented: true,  hidden: false, cat: "core", category: "content manager"},
+    "Chargement automatique":     {id: "fork-ps-5", info: "Charge, recharge et décharge automatiquement les plugins et les thèmes", implemented: true,  hidden: false, cat: "core", category: "content manager"},
 
     /* Developer */
-    "Developer Mode":         	  {id: "bda-gs-8",  info: "Developer Mode",                                    implemented: true,  hidden: false, cat: "core", category: "developer settings"},
-    "Copy Selector":			  {id: "fork-dm-1", info: "Adds a \"Copy Selector\" option to context menus when developer mode is active", implemented: true,  hidden: false, cat: "core", category: "developer settings"},
+    "Mode développeur":           {id: "bda-gs-8",  info: "Active le mode développeur",                                    implemented: true,  hidden: false, cat: "core", category: "developer settings"},
+    "Copy Selector":			  {id: "fork-dm-1", info: "Ajoute l'option \"Copy Selector\" au menu contextuel quand le mode développeur est actif", implemented: true,  hidden: false, cat: "core", category: "developer settings"},
 
     /* Window Prefs */
-    "Enable Transparency":        {id: "fork-wp-1", info: "Enables the main window to be see-through (requires restart)", implemented: true,  hidden: false, cat: "core", category: "window preferences"},
-    "Window Frame":               {id: "fork-wp-2", info: "Adds the native os window frame to the main window", implemented: false,  hidden: true, cat: "core", category: "window preferences"},
+    "Activer la transparence":    {id: "fork-wp-1", info: "Active la transparence de la fenêtre principale (nécessite un redémarrage)", implemented: true,  hidden: false, cat: "core", category: "window preferences"},
+    "Fenêtre native":             {id: "fork-wp-2", info: "Ajoute la fenêtre native de l'OS a la fenêtre principale", implemented: false,  hidden: true, cat: "core", category: "window preferences"},
 
 
     /* Emotes */
     /* ====== */
-    "Download Emotes":            {id: "fork-es-3", info: "Download emotes when the cache is expired", implemented: true,  hidden: false, cat: "emote"},
-    "Twitch Emotes":              {id: "bda-es-7",  info: "Show Twitch emotes",                                implemented: true,  hidden: false, cat: "emote"},
-    "FrankerFaceZ Emotes":        {id: "bda-es-1",  info: "Show FrankerFaceZ Emotes",                          implemented: true,  hidden: false, cat: "emote"},
-    "BetterTTV Emotes":           {id: "bda-es-2",  info: "Show BetterTTV Emotes",                             implemented: true,  hidden: false, cat: "emote"},
-    "Emote Menu":                 {id: "bda-es-0",  info: "Show Twitch/Favourite emotes in emote menu",        implemented: true,  hidden: false, cat: "emote"},
-    "Emoji Menu":                 {id: "bda-es-9",  info: "Show Discord emoji menu",                           implemented: true,  hidden: false, cat: "emote"},
-    "Emote Auto Capitalization":  {id: "bda-es-4",  info: "Autocapitalize emote commands",                     implemented: true,  hidden: false, cat: "emote"},
-    "Show Names":                 {id: "bda-es-6",  info: "Show emote names on hover",                         implemented: true,  hidden: false, cat: "emote"},
-    "Show emote modifiers":       {id: "bda-es-8",  info: "Enable emote mods (flip, spin, pulse, spin2, spin3, 1spin, 2spin, 3spin, tr, bl, br, shake, shake2, shake3, flap)", implemented: true,  hidden: false, cat: "emote"},
-    "Animate On Hover":           {id: "fork-es-2", info: "Only animate the emote modifiers on hover", implemented: true,  hidden: false, cat: "emote"}
+    "Télécharger les émotes":     {id: "fork-es-3", info: "Télécharge les émotes quand le cache est expiré",   implemented: true,  hidden: false, cat: "emote"},
+    "Émotes Twitch":              {id: "bda-es-7",  info: "Afficher les émotes Twitch",                        implemented: true,  hidden: false, cat: "emote"},
+    "Émotes FrankerFaceZ":        {id: "bda-es-1",  info: "Afficher les émotes FrankerFaceZ",                          implemented: true,  hidden: false, cat: "emote"},
+    "Émotes BetterTTV":           {id: "bda-es-2",  info: "Afficher les émotes BetterTTV",                             implemented: true,  hidden: false, cat: "emote"},
+    "Menu des émotes":            {id: "bda-es-0",  info: "Afficher les émotes Twitch/Favoris dans le menu des émotes",        implemented: true,  hidden: false, cat: "emote"},
+    "Menu des émojis":            {id: "bda-es-9",  info: "Afficher le menu des émojis Discord",                           implemented: true,  hidden: false, cat: "emote"},
+    "Autocapitalisation des émotes":  {id: "bda-es-4",  info: "Autocapitaliser les commandes émote",                     implemented: true,  hidden: false, cat: "emote"},
+    "Afficher les noms":                 {id: "bda-es-6",  info: "Afficher le nom de l'émote lors du survol",                         implemented: true,  hidden: false, cat: "emote"},
+    "Afficher les mods des émotes":       {id: "bda-es-8",  info: "Activer les modifications des émotes (flip, spin, pulse, spin2, spin3, 1spin, 2spin, 3spin, tr, bl, br, shake, shake2, shake3, flap)", implemented: true,  hidden: false, cat: "emote"},
+    "Animer lors du survol":           {id: "fork-es-2", info: "Animer seulement les modifications des démotes lors du survol", implemented: true,  hidden: false, cat: "emote"}
 };
 
 var defaultCookie = {
@@ -516,18 +516,18 @@ Core.prototype.showContentErrors = function({plugins: pluginErrors = [], themes:
                     <div class="bd-backdrop backdrop-1wrmKB"></div>
                     <div class="bd-modal bd-content-modal modal-1UGdnR">
                         <div class="bd-modal-inner inner-1JeGVc">
-                            <div class="header header-1R_AjF"><div class="title">Content Errors</div></div>
+                            <div class="header header-1R_AjF"><div class="title">Contenu des erreurs</div></div>
                             <div class="bd-modal-body">
                                 <div class="tab-bar-container">
                                     <div class="tab-bar TOP">
                                         <div class="tab-bar-item">Plugins</div>
-                                        <div class="tab-bar-item">Themes</div>
+                                        <div class="tab-bar-item">Thèmes</div>
                                     </div>
                                 </div>
                                 <div class="table-header">
-                                    <div class="table-column column-name">Name</div>
+                                    <div class="table-column column-name">Nom</div>
                                     <div class="table-column column-message">Message</div>
-                                    <div class="table-column column-error">Error</div>
+                                    <div class="table-column column-error">Erreur</div>
                                 </div>
                                 <div class="scroller-wrap fade">
                                     <div class="scroller">
@@ -554,7 +554,7 @@ Core.prototype.showContentErrors = function({plugins: pluginErrors = [], themes:
             if (err.error) {
                 error.find("a").on("click", (e) => {
                     e.preventDefault();
-                    Utils.err("ContentManager", `Error details for ${err.name ? err.name : err.file}.`, err.error);
+                    Utils.err("ContentManager", `Détails des erreurs pour ${err.name ? err.name : err.file}.`, err.error);
                 });
             }
         }
@@ -992,8 +992,8 @@ QuickEmoteMenu.prototype.init = function() {
     var qmeHeader = "";
     qmeHeader += "<div id=\"bda-qem\">";
     qmeHeader += "    <button class=\"active\" id=\"bda-qem-twitch\" onclick='quickEmoteMenu.switchHandler(this); return false;'>Twitch</button>";
-    qmeHeader += "    <button id=\"bda-qem-favourite\" onclick='quickEmoteMenu.switchHandler(this); return false;'>Favourite</button>";
-    qmeHeader += "    <button id=\"bda-qem-emojis\" onclick='quickEmoteMenu.switchHandler(this); return false;'>Emojis</buttond>";
+    qmeHeader += "    <button id=\"bda-qem-favourite\" onclick='quickEmoteMenu.switchHandler(this); return false;'>Favoris</button>";
+    qmeHeader += "    <button id=\"bda-qem-emojis\" onclick='quickEmoteMenu.switchHandler(this); return false;'>Émojis</buttond>";
     qmeHeader += "</div>";
     this.qmeHeader = qmeHeader;
 
@@ -1825,7 +1825,7 @@ ThemeModule.prototype.enableTheme = function(name, reload = false) {
     this.saveThemeData();
     const theme = bdthemes[name];
     $("head").append($("<style>", {id: theme.id, text: unescape(theme.css)}));
-    if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${theme.name} v${theme.version} has been applied.`);
+    if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${theme.name} v${theme.version} a bien été appliqué.`);
 };
 
 ThemeModule.prototype.disableTheme = function(name, reload = false) {
@@ -1833,7 +1833,7 @@ ThemeModule.prototype.disableTheme = function(name, reload = false) {
     this.saveThemeData();
     const theme = bdthemes[name];
     $(`#${theme.id}`).remove();
-    if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${theme.name} v${theme.version} has been disabled.`);
+    if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${theme.name} v${theme.version} a bien été désactivé.`);
 };
 
 ThemeModule.prototype.toggleTheme = function(theme) {
@@ -1845,12 +1845,12 @@ ThemeModule.prototype.loadTheme = function(filename) {
     const error = ContentManager.loadContent(filename, "theme");
     if (error) {
         if (settingsCookie["fork-ps-1"]) mainCore.showContentErrors({themes: [error]});
-        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${filename} could not be loaded. It may not have been loaded.`, {type: "error"});
-        return Utils.err("ContentManager", `${filename} could not be loaded.`, error);
+        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${filename} n'a pas pu être chargé. Il n’a peut-être pas été chargé.`, {type: "error"});
+        return Utils.err("ContentManager", `${filename} n'a pas pu être chargé.`, error);
     }
     const theme = Object.values(bdthemes).find(p => p.filename == filename);
-    Utils.log("ContentManager", `${theme.name} v${theme.version} was loaded.`);
-    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme.name} v${theme.version} was loaded.`, {type: "success"});
+    Utils.log("ContentManager", `${theme.name} v${theme.version} a été chargé.`);
+    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme.name} v${theme.version} a été chargé.`, {type: "success"});
     BDEvents.dispatch("theme-loaded", theme.name);
 };
 
@@ -1863,11 +1863,11 @@ ThemeModule.prototype.unloadTheme = function(filenameOrName) {
     delete bdthemes[theme];
     if (error) {
         if (settingsCookie["fork-ps-1"]) mainCore.showContentErrors({themes: [error]});
-        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme} could not be unloaded. It may have not been loaded yet.`, {type: "error"});
-        return Utils.err("ContentManager", `${theme} could not be unloaded. It may have not been loaded yet.`, error);
+        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme} n'a pas pu être déchargé. Il n’a peut-être pas encore été chargé.`, {type: "error"});
+        return Utils.err("ContentManager", `${theme} n'a pas pu être déchargé. Il n’a peut-être pas encore été chargé.`, error);
     }
-    Utils.log("ContentManager", `${theme} was unloaded.`);
-    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme} was unloaded.`, {type: "success"});
+    Utils.log("ContentManager", `${theme} a été déchargé.`);
+    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme} a été déchargé.`, {type: "success"});
     BDEvents.dispatch("theme-unloaded", theme);
 };
 
@@ -1879,11 +1879,11 @@ ThemeModule.prototype.reloadTheme = function(filenameOrName) {
     if (themeCookie[theme]) this.disableTheme(theme, true), this.enableTheme(theme, true);
     if (error) {
         if (settingsCookie["fork-ps-1"]) mainCore.showContentErrors({themes: [error]});
-        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme} could not be reloaded.`, {type: "error"});
-        return Utils.err("ContentManager", `${theme} could not be reloaded.`, error);
+        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme} ne peux pas être rechargé.`, {type: "error"});
+        return Utils.err("ContentManager", `${theme} ne peux pas être rechargé.`, error);
     }
-    Utils.log("ContentManager", `${theme} v${bdthemes[theme].version} was reloaded.`);
-    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme} v${bdthemes[theme].version} was reloaded.`, {type: "success"});
+    Utils.log("ContentManager", `${theme} v${bdthemes[theme].version} a été rechargé.`);
+    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${theme} v${bdthemes[theme].version} a été rechargé.`, {type: "success"});
     BDEvents.dispatch("theme-reloaded", theme);
 };
 
@@ -2046,7 +2046,7 @@ BdApi.showConfirmationModal = function (title, content, options = {}) {
             children: content,
             red: danger,
             confirmText: confirmText ? confirmText : "Okay",
-            cancelText: cancelText ? cancelText : "Cancel",
+            cancelText: cancelText ? cancelText : "Annuler",
             onConfirm: onConfirm ? onConfirm : emptyFunction,
             onCancel: onCancel ? onCancel : emptyFunction
         }, props));
@@ -3425,7 +3425,7 @@ class V2C_CssEditor extends BDV2.reactComponent {
             detached && BDV2.react.createElement(
                 "div",
                 {id: "editor-detached"},
-                BDV2.react.createElement(V2Components.SettingsTitle, {text: "Custom CSS Editor"}),
+                BDV2.react.createElement(V2Components.SettingsTitle, {text: "Éditeur CSS Perso."}),
                 BDV2.react.createElement(
                     "h3",
                     null,
@@ -3442,7 +3442,7 @@ class V2C_CssEditor extends BDV2.reactComponent {
             !detached && BDV2.react.createElement(
                 "div",
                 null,
-                BDV2.react.createElement(V2Components.SettingsTitle, {text: "Custom CSS Editor"}),
+                BDV2.react.createElement(V2Components.SettingsTitle, {text: "Éditeur CSS Perso."}),
                 BDV2.react.createElement("div", {className: "editor-wrapper"},
                     BDV2.react.createElement("div", {id: "bd-customcss-editor", className: "editor", ref: "editor"}, self.css)
                 ),
@@ -3462,33 +3462,33 @@ class V2C_CssEditor extends BDV2.reactComponent {
                             {style: {borderRadius: "3px 0 0 3px", borderRight: "1px solid #3f4146"}, className: "btn btn-primary", onClick: () => {
                                     self.onClick("update");
                                 }},
-                            "Update"
+                            "Actualiser"
                         ),
                         BDV2.react.createElement(
                             "button",
                             {style: {borderRadius: "0", borderLeft: "1px solid #2d2d2d", borderRight: "1px solid #2d2d2d"}, className: "btn btn-primary", onClick: () => {
                                     self.onClick("save");
                                 }},
-                            "Save"
+                            "Sauvegarder"
                         ),
                         BDV2.react.createElement(
                             "button",
                             {style: {borderRadius: "0 3px 3px 0", borderLeft: "1px solid #3f4146"}, className: "btn btn-primary", onClick: () => {
                                     self.onClick("detach");
                                 }},
-                            "Detach"
+                            "Détacher"
                         ),
                         BDV2.react.createElement(
                             "span",
                             {style: {fontSize: "10px", marginLeft: "5px"}},
-                            "Unsaved changes are lost on detach"
+                            "Les changements non sauvegardés seront perdus au détachement"
                         ),
                         BDV2.react.createElement("div", {className: "help-text"},
-                            "Press ",
+                            "Appuies sur ",
                             BDV2.react.createElement("code", {className: "inline"}, "ctrl"),
                             "+",
                             BDV2.react.createElement("span", {className: "inline"}, ","),
-                            " with the editor focused to access the editor's settings."
+                            " avec l'éditeur en focus pour accéder aux paramètres de l'éditeur."
                         )
                     )
                 )
@@ -3724,11 +3724,11 @@ class V2C_PluginCard extends BDV2.reactComponent {
             ),
             (website || source || this.hasSettings) && BDV2.react.createElement("div", {className: "bda-footer"},
                 BDV2.react.createElement("span", {className: "bda-links"},
-                    website && BDV2.react.createElement("a", {className: "bda-link bda-link-website", href: website, target: "_blank"}, "Website"),
+                    website && BDV2.react.createElement("a", {className: "bda-link bda-link-website", href: website, target: "_blank"}, "Site web"),
                     website && source && " | ",
                     source && BDV2.react.createElement("a", {className: "bda-link bda-link-source", href: source, target: "_blank"}, "Source")
                 ),
-                this.hasSettings && BDV2.react.createElement("button", {onClick: this.showSettings, className: "bda-settings-button", disabled: !this.state.checked}, "Settings")
+                this.hasSettings && BDV2.react.createElement("button", {onClick: this.showSettings, className: "bda-settings-button", disabled: !this.state.checked}, "Paramètres")
             )
         );
     }
@@ -3975,7 +3975,7 @@ class V2_SettingsPanel_Sidebar {
     }
 
     get items() {
-        return [{text: "Settings", id: "core"}, {text: "Emotes", id: "emotes"}, {text: "Plugins", id: "plugins"}, {text: "Themes", id: "themes"}, {text: "Custom CSS", id: "customcss"}];
+        return [{text: "Paramètres", id: "core"}, {text: "Émotes", id: "emotes"}, {text: "Plugins", id: "plugins"}, {text: "Thèmes", id: "themes"}, {text: "CSS Personnalisé", id: "customcss"}];
     }
 
     get component() {
@@ -3986,7 +3986,7 @@ class V2_SettingsPanel_Sidebar {
             BDV2.react.createElement(
                 "div",
                 {style: {fontSize: "12px", fontWeight: "600", color: "#72767d", padding: "2px 10px"}},
-                `BD v${bdConfig.version} by `,
+                `BD v${bdConfig.version} par `,
                 BDV2.react.createElement(
                     "a",
                     {href: "https://github.com/Jiiks/", target: "_blank"},
@@ -3996,7 +3996,7 @@ class V2_SettingsPanel_Sidebar {
             BDV2.react.createElement(
                 "div",
                 {style: {fontSize: "12px", fontWeight: "600", color: "#72767d", padding: "2px 10px"}},
-                `BBD v${bbdVersion} by `,
+                `BBD v${bbdVersion} par `,
                 BDV2.react.createElement(
                     "a",
                     {href: "https://github.com/rauenzi/", target: "_blank"},
@@ -4299,11 +4299,11 @@ class V2_SettingsPanel {
             arr.push(BDV2.react.createElement(V2Components.PluginCard, {key: key, plugin: bdplugins[key].plugin}));return arr;
         }, []);
         let list = BDV2.react.createElement(V2Components.List, {key: "plugin-list", className: "bda-slist", children: plugins});
-        let refreshIcon = !settingsCookie["fork-ps-5"] && BDV2.react.createElement(V2Components.TooltipWrap(V2Components.ReloadIcon, {color: "black", side: "top", text: "Reload Plugin List"}), {className: "bd-reload-header", size: "18px", onClick: async () => {
+        let refreshIcon = !settingsCookie["fork-ps-5"] && BDV2.react.createElement(V2Components.TooltipWrap(V2Components.ReloadIcon, {color: "black", side: "top", text: "Recharger la liste des plugins"}), {className: "bd-reload-header", size: "18px", onClick: async () => {
             pluginModule.updatePluginList();
             this.sideBarOnClick("plugins");
         }});
-        let pfBtn = BDV2.react.createElement("button", {key: "folder-button", className: "bd-pfbtn", onClick: () => { require("electron").shell.openItem(ContentManager.pluginsFolder); }}, "Open Plugin Folder");
+        let pfBtn = BDV2.react.createElement("button", {key: "folder-button", className: "bd-pfbtn", onClick: () => { require("electron").shell.openItem(ContentManager.pluginsFolder); }}, "Ouvrir le dossier des plugins");
         let contentColumn = BDV2.react.createElement(V2Components.ContentColumn, {key: "pcolumn", title: "Plugins", children: [refreshIcon, pfBtn, list]});
         return BDV2.react.createElement(V2Components.Scroller, {contentColumn: true, fade: true, dark: true, children: [contentColumn, BDV2.react.createElement(V2Components.Tools, {key: "tools"})]});
     }
@@ -4313,12 +4313,12 @@ class V2_SettingsPanel {
             arr.push(BDV2.react.createElement(V2Components.ThemeCard, {key: key, theme: bdthemes[key]}));return arr;
         }, []);
         let list = BDV2.react.createElement(V2Components.List, {key: "theme-list", className: "bda-slist", children: themes});
-        let refreshIcon = !settingsCookie["fork-ps-5"] && BDV2.react.createElement(V2Components.TooltipWrap(V2Components.ReloadIcon, {color: "black", side: "top", text: "Reload Theme List"}), {className: "bd-reload-header", size: "18px", onClick: async () => {
+        let refreshIcon = !settingsCookie["fork-ps-5"] && BDV2.react.createElement(V2Components.TooltipWrap(V2Components.ReloadIcon, {color: "black", side: "top", text: "Recharger la liste des thèmes"}), {className: "bd-reload-header", size: "18px", onClick: async () => {
             themeModule.updateThemeList();
             this.sideBarOnClick("themes");
         }});
-        let tfBtn = BDV2.react.createElement("button", {key: "folder-button", className: "bd-pfbtn", onClick: () => { require("electron").shell.openItem(ContentManager.themesFolder); }}, "Open Theme Folder");
-        let contentColumn = BDV2.react.createElement(V2Components.ContentColumn, {key: "tcolumn", title: "Themes", children: [refreshIcon, tfBtn, list]});
+        let tfBtn = BDV2.react.createElement("button", {key: "folder-button", className: "bd-pfbtn", onClick: () => { require("electron").shell.openItem(ContentManager.themesFolder); }}, "Ouvrir le dossier des thèmes");
+        let contentColumn = BDV2.react.createElement(V2Components.ContentColumn, {key: "tcolumn", title: "Thèmes", children: [refreshIcon, tfBtn, list]});
         return BDV2.react.createElement(V2Components.Scroller, {contentColumn: true, fade: true, dark: true, children: [contentColumn, BDV2.react.createElement(V2Components.Tools, {key: "tools"})]});
     }
 
@@ -4606,7 +4606,7 @@ class V2C_ServerCard extends BDV2.reactComponent {
                             "h5",
                             {className: "h5-18_1nd defaultColor-1_ajX0 margin-reset bd-server-member-count"},
                             server.members,
-                            " Members"
+                            " Membres"
                         )
                     ),
                     BDV2.react.createElement(
@@ -4636,7 +4636,7 @@ class V2C_ServerCard extends BDV2.reactComponent {
                             BDV2.react.createElement(
                                 "div",
                                 {className: "ui-button-contents"},
-                                "Joined"
+                                "Rejoint"
                             )
                         ),
                         server.error && BDV2.react.createElement(
@@ -4645,7 +4645,7 @@ class V2C_ServerCard extends BDV2.reactComponent {
                             BDV2.react.createElement(
                                 "div",
                                 {className: "ui-button-contents"},
-                                "Error"
+                                "Erreur"
                             )
                         ),
                         !server.error && !this.state.joined && BDV2.react.createElement(
@@ -4654,7 +4654,7 @@ class V2C_ServerCard extends BDV2.reactComponent {
                             BDV2.react.createElement(
                                 "div",
                                 {className: "ui-button-contents"},
-                                "Join"
+                                "Rejoindre"
                             )
                         )
                     )
@@ -4700,7 +4700,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
     setInitialState() {
         this.state = {
             selectedCategory: -1,
-            title: "Loading...",
+            title: "Chargement...",
             loading: true,
             servers: [],
             next: null,
@@ -4745,7 +4745,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
                     data.next = null;
                 }
 
-                let title = `Showing 1-${end} of ${data.total} results in ${self.categoryButtons[self.state.selectedCategory]}`;
+                let title = `Affichage de 1-${end} sur ${data.total} résultats dans ${self.categoryButtons[self.state.selectedCategory]}`;
                 if (self.state.term) title += ` for ${self.state.term}`;
 
                 self.setState({
@@ -4933,12 +4933,12 @@ class V2C_PublicServers extends BDV2.reactComponent {
                 BDV2.react.createElement(
                     "div",
                     {className: "ui-tab-bar-header", style: {fontSize: "16px"}},
-                    "Public Servers"
+                    "Serveurs publics"
                 ),
                 BDV2.react.createElement(V2Components.TabBar.Separator, null),
                 this.searchInput,
                 BDV2.react.createElement(V2Components.TabBar.Separator, null),
-                BDV2.react.createElement(V2Components.TabBar.Header, {text: "Categories"}),
+                BDV2.react.createElement(V2Components.TabBar.Header, {text: "Catégories"}),
                 this.categoryButtons.map((value, index) => {
                     return BDV2.react.createElement(V2Components.TabBar.Item, {id: index, onClick: this.changeCategory, key: index, text: value, selected: this.state.selectedCategory === index});
                 }),
@@ -4956,7 +4956,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
             BDV2.react.createElement(
                 "div",
                 {className: "ui-text-input flex-vertical", style: {width: "172px", marginLeft: "10px"}},
-                BDV2.react.createElement("input", {ref: "searchinput", onKeyDown: this.searchKeyDown, onChange: () => {}, type: "text", className: "input default", placeholder: "Search...", maxLength: "50"})
+                BDV2.react.createElement("input", {ref: "searchinput", onKeyDown: this.searchKeyDown, onChange: () => {}, type: "text", className: "input default", placeholder: "Rechercher...", maxLength: "50"})
             )
         );
     }
@@ -4966,7 +4966,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
         if (self.state.loading || e.which !== 13) return;
         self.setState({
             loading: true,
-            title: "Loading...",
+            title: "Chargement...",
             term: e.target.value
         });
         let query = `?term=${e.target.value}`;
@@ -4987,7 +4987,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
         self.setState({
             loading: true,
             selectedCategory: id,
-            title: "Loading...",
+            title: "Chargement...",
             term: null
         });
         if (id === 0) {
@@ -5018,7 +5018,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
                 BDV2.react.createElement(
                     "div",
                     {className: "ui-button-contents"},
-                    self.state.loading ? "Loading" : "Load More"
+                    self.state.loading ? "Chargement" : "Charger plus"
                 )
             ),
             self.state.servers.length > 0 && BDV2.react.createElement(V2Components.SettingsTitle, {text: self.state.title})
@@ -5051,7 +5051,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
                     BDV2.react.createElement(
                         "div",
                         {className: "ui-button-contents"},
-                        "Connect"
+                        "Se connecter"
                     )
                 )
             ), self.bdServer
@@ -5082,7 +5082,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
             BDV2.react.createElement(
                 "span",
                 {style: {color: "#b9bbbe", fontSize: "10px", marginLeft: "10px"}},
-                "Connected as: ",
+                "Connecté en tant que: ",
                 `${connection.user.username}#${connection.user.discriminator}`
             ),
             BDV2.react.createElement(
@@ -5094,7 +5094,7 @@ class V2C_PublicServers extends BDV2.reactComponent {
                     BDV2.react.createElement(
                         "div",
                         {className: "ui-button-contents", onClick: self.connect},
-                        "Reconnect"
+                        "Se reconnecter"
                     )
                 )
             )
