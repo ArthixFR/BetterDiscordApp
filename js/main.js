@@ -843,7 +843,7 @@ EmoteModule.prototype.loadEmoteData = async function(emoteInfo) {
     const exists = await new Promise(r => fs.exists(file, r));
 
     if (exists && this.isCacheValid()) {
-        if (settingsCookie["fork-ps-2"]) mainCore.showToast("Loading emotes from cache.", {type: "info"});
+        if (settingsCookie["fork-ps-2"]) mainCore.showToast("Chargement des émotes à partir du cache.", {type: "info"});
         Utils.log("Emotes", "Loading emotes from local cache.");
 
         const data = await new Promise(resolve => {
@@ -863,7 +863,7 @@ EmoteModule.prototype.loadEmoteData = async function(emoteInfo) {
         }
 
         if (isValid) {
-            if (settingsCookie["fork-ps-2"]) mainCore.showToast("Emotes successfully loaded.", {type: "success"});
+            if (settingsCookie["fork-ps-2"]) mainCore.showToast("Émotes correctement chargés.", {type: "success"});
             return;
         }
 
@@ -872,7 +872,7 @@ EmoteModule.prototype.loadEmoteData = async function(emoteInfo) {
     }
 
     if (!settingsCookie["fork-es-3"]) return;
-    if (settingsCookie["fork-ps-2"]) mainCore.showToast("Downloading emotes in the background do not reload.", {type: "info"});
+    if (settingsCookie["fork-ps-2"]) mainCore.showToast("Téléchargement des émotes en fond, ne pas recharger.", {type: "info"});
 
     for (let e in emoteInfo) {
         await new Promise(r => setTimeout(r, 1000));
@@ -880,7 +880,7 @@ EmoteModule.prototype.loadEmoteData = async function(emoteInfo) {
         window.bdEmotes[emoteInfo[e].variable] = data;
     }
 
-    if (settingsCookie["fork-ps-2"]) mainCore.showToast("All emotes successfully downloaded.", {type: "success"});
+    if (settingsCookie["fork-ps-2"]) mainCore.showToast("Toutes les émotes ont été téléchargé.", {type: "success"});
 
     try { await new Promise(r => fs.writeFile(file, JSON.stringify(window.bdEmotes), "utf8", r)); }
     catch (err) { Utils.err("Emotes", "Could not save emote data.", err); }
@@ -1617,7 +1617,7 @@ PluginModule.prototype.loadPlugins = function () {
         }
         catch (err) {
             pluginCookie[name] = false;
-            Utils.err("Plugins", name + " could not be loaded.", err);
+            Utils.err("Plugins", name + " n'a pas pu être chargé.", err);
             bdpluginErrors.push({name: name, file: bdplugins[plugins[i]].filename, message: "load() could not be fired.", error: {message: err.message, stack: err.stack}});
             continue;
         }
@@ -1627,11 +1627,11 @@ PluginModule.prototype.loadPlugins = function () {
         if (pluginCookie[name]) {
             try {
                 plugin.start();
-                if (settingsCookie["fork-ps-2"]) mainCore.showToast(`${plugin.getName()} v${plugin.getVersion()} has started.`);
+                if (settingsCookie["fork-ps-2"]) mainCore.showToast(`${plugin.getName()} v${plugin.getVersion()} a été démarré.`);
             }
             catch (err) {
                 pluginCookie[name] = false;
-                Utils.err("Plugins", name + " could not be started.", err);
+                Utils.err("Plugins", name + " n'a pas pu être démarré.", err);
                 bdpluginErrors.push({name: name, file: bdplugins[plugins[i]].filename, message: "start() could not be fired.", error: {message: err.message, stack: err.stack}});
             }
         }
@@ -1645,24 +1645,24 @@ PluginModule.prototype.loadPlugins = function () {
 PluginModule.prototype.startPlugin = function(plugin, reload = false) {
     try {
         bdplugins[plugin].plugin.start();
-        if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${bdplugins[plugin].plugin.getName()} v${bdplugins[plugin].plugin.getVersion()} has started.`);
+        if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${bdplugins[plugin].plugin.getName()} v${bdplugins[plugin].plugin.getVersion()} a été démarré.`);
     }
     catch (err) {
-        if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${bdplugins[plugin].plugin.getName()} v${bdplugins[plugin].plugin.getVersion()} could not be started.`, {type: "error"});
+        if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${bdplugins[plugin].plugin.getName()} v${bdplugins[plugin].plugin.getVersion()} n'a pas pu être démarré.`, {type: "error"});
         pluginCookie[plugin] = false;
         this.savePluginData();
-        Utils.err("Plugins", plugin + " could not be started.", err);
+        Utils.err("Plugins", plugin + " n'a pas pu être démarré.", err);
     }
 };
 
 PluginModule.prototype.stopPlugin = function(plugin, reload = false) {
     try {
         bdplugins[plugin].plugin.stop();
-        if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${bdplugins[plugin].plugin.getName()} v${bdplugins[plugin].plugin.getVersion()} has stopped.`);
+        if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${bdplugins[plugin].plugin.getName()} v${bdplugins[plugin].plugin.getVersion()} a été stoppé.`);
     }
     catch (err) {
-        if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${bdplugins[plugin].plugin.getName()} v${bdplugins[plugin].plugin.getVersion()} could not be stopped.`, {type: "error"});
-        Utils.err("Plugins", bdplugins[plugin].plugin.getName() + " could not be stopped.", err);
+        if (settingsCookie["fork-ps-2"] && !reload) mainCore.showToast(`${bdplugins[plugin].plugin.getName()} v${bdplugins[plugin].plugin.getVersion()} n'a pas pu être stoppé.`, {type: "error"});
+        Utils.err("Plugins", bdplugins[plugin].plugin.getName() + " n'a pas pu être stoppé.", err);
     }
 };
 
@@ -1689,14 +1689,14 @@ PluginModule.prototype.loadPlugin = function(filename) {
     const error = ContentManager.loadContent(filename, "plugin");
     if (error) {
         if (settingsCookie["fork-ps-1"]) mainCore.showContentErrors({plugins: [error]});
-        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${filename} could not be loaded.`, {type: "error"});
-        return Utils.err("ContentManager", `${filename} could not be loaded.`, error);
+        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${filename} n'a pas pu être chargé.`, {type: "error"});
+        return Utils.err("ContentManager", `${filename} n'a pas pu être chargé.`, error);
     }
     const plugin = Object.values(bdplugins).find(p => p.filename == filename).plugin;
     try { if (plugin.load && typeof(plugin.load) == "function") plugin.load();}
     catch (err) {if (settingsCookie["fork-ps-1"]) mainCore.showContentErrors({plugins: [err]});}
-    Utils.log("ContentManager", `${plugin.getName()} v${plugin.getVersion()} was loaded.`);
-    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin.getName()} v${plugin.getVersion()} was loaded.`, {type: "success"});
+    Utils.log("ContentManager", `${plugin.getName()} v${plugin.getVersion()} a été chargé.`);
+    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin.getName()} v${plugin.getVersion()} a été chargé.`, {type: "success"});
     BDEvents.dispatch("plugin-loaded", plugin.getName());
 };
 
@@ -1709,11 +1709,11 @@ PluginModule.prototype.unloadPlugin = function(filenameOrName) {
     delete bdplugins[plugin];
     if (error) {
         if (settingsCookie["fork-ps-1"]) mainCore.showContentErrors({plugins: [error]});
-        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin} could not be unloaded. It may have not been loaded yet.`, {type: "error"});
-        return Utils.err("ContentManager", `${plugin} could not be unloaded. It may have not been loaded yet.`, error);
+        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin} n'a pas pu être déchargé. Il n’a peut-être pas encore été chargé.`, {type: "error"});
+        return Utils.err("ContentManager", `${plugin} n'a pas pu être déchargé. Il n’a peut-être pas encore été chargé.`, error);
     }
-    Utils.log("ContentManager", `${plugin} was unloaded.`);
-    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin} was unloaded.`, {type: "success"});
+    Utils.log("ContentManager", `${plugin} a été déchargé.`);
+    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin} a été déchargé.`, {type: "success"});
     BDEvents.dispatch("plugin-unloaded", plugin);
 };
 
@@ -1726,13 +1726,13 @@ PluginModule.prototype.reloadPlugin = function(filenameOrName) {
     const error = ContentManager.reloadContent(bdplugins[plugin].filename, "plugin");
     if (error) {
         if (settingsCookie["fork-ps-1"]) mainCore.showContentErrors({plugins: [error]});
-        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin} could not be reloaded.`, {type: "error"});
-        return Utils.err("ContentManager", `${plugin} could not be reloaded.`, error);
+        if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin} ne peux pas être rechargé.`, {type: "error"});
+        return Utils.err("ContentManager", `${plugin} ne peux pas être rechargé.`, error);
     }
     if (bdplugins[plugin].plugin.load && typeof(bdplugins[plugin].plugin.load) == "function") bdplugins[plugin].plugin.load();
     if (enabled) this.startPlugin(plugin, true);
-    Utils.log("ContentManager", `${plugin} v${bdplugins[plugin].plugin.getVersion()} was reloaded.`);
-    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin} v${bdplugins[plugin].plugin.getVersion()} was reloaded.`, {type: "success"});
+    Utils.log("ContentManager", `${plugin} v${bdplugins[plugin].plugin.getVersion()} a été rechargé.`);
+    if (settingsCookie["fork-ps-2"]) BdApi.showToast(`${plugin} v${bdplugins[plugin].plugin.getVersion()} a été rechargé.`, {type: "success"});
     BDEvents.dispatch("plugin-reloaded", plugin);
 };
 
@@ -2767,7 +2767,7 @@ class BDEmote extends BDV2.reactComponent {
                     }),
                     BDV2.react.createElement("input", {
                         className: "fav" + (this.state.isFavorite ? " active" : ""),
-                        title: "Favorite!",
+                        title: "Ajouter aux favoris!",
                         type: "button",
                         onClick: (e) => {
                             e.preventDefault();
@@ -3265,7 +3265,7 @@ class V2C_CssEditorDetached extends BDV2.reactComponent {
                     BDV2.react.createElement(
                         "ul",
                         {className: "checkbox-group"},
-                        BDV2.react.createElement(V2Components.Checkbox, {id: "live-update", text: "Live Update", onChange: self.onChange, checked: settingsCookie["bda-css-0"]})
+                        BDV2.react.createElement(V2Components.Checkbox, {id: "live-update", text: "Acutalisation en temps réel", onChange: self.onChange, checked: settingsCookie["bda-css-0"]})
                     ),
                     BDV2.react.createElement(
                         "div",
@@ -3275,26 +3275,26 @@ class V2C_CssEditorDetached extends BDV2.reactComponent {
                             {style: {borderRadius: "3px 0 0 3px", borderRight: "1px solid #3f4146"}, className: "btn btn-primary", onClick: () => {
                                     self.onClick("update");
                                 }},
-                            "Update"
+                            "Actualiser"
                         ),
                         BDV2.react.createElement(
                             "button",
                             {style: {borderRadius: "0", borderLeft: "1px solid #2d2d2d", borderRight: "1px solid #2d2d2d"}, className: "btn btn-primary", onClick: () => {
                                     self.onClick("save");
                                 }},
-                            "Save"
+                            "Sauvegarder"
                         ),
                         BDV2.react.createElement(
                             "button",
                             {style: {borderRadius: "0 3px 3px 0", borderLeft: "1px solid #3f4146"}, className: "btn btn-primary", onClick: () => {
                                     self.onClick("attach");
                                 }},
-                            "Attach"
+                            "Attacher"
                         ),
                         BDV2.react.createElement(
                             "span",
                             {style: {fontSize: "10px", marginLeft: "5px"}},
-                            "Unsaved changes are lost on attach"
+                            "Les changements non sauvegardés seront perdus à l'attachement"
                         )
                     )
                 )
@@ -3425,24 +3425,24 @@ class V2C_CssEditor extends BDV2.reactComponent {
             detached && BDV2.react.createElement(
                 "div",
                 {id: "editor-detached"},
-                BDV2.react.createElement(V2Components.SettingsTitle, {text: "Éditeur CSS Perso."}),
+                BDV2.react.createElement(V2Components.SettingsTitle, {text: "Éditeur CSS personnalisé"}),
                 BDV2.react.createElement(
                     "h3",
                     null,
-                    "Editor Detached"
+                    "Éditeur détaché"
                 ),
                 BDV2.react.createElement(
                     "button",
                     {className: "btn btn-primary", onClick: () => {
                             self.attach();
                         }},
-                    "Attach"
+                    "Attacher"
                 )
             ),
             !detached && BDV2.react.createElement(
                 "div",
                 null,
-                BDV2.react.createElement(V2Components.SettingsTitle, {text: "Éditeur CSS Perso."}),
+                BDV2.react.createElement(V2Components.SettingsTitle, {text: "Éditeur CSS personnalisé"}),
                 BDV2.react.createElement("div", {className: "editor-wrapper"},
                     BDV2.react.createElement("div", {id: "bd-customcss-editor", className: "editor", ref: "editor"}, self.css)
                 ),
@@ -3452,7 +3452,7 @@ class V2C_CssEditor extends BDV2.reactComponent {
                     BDV2.react.createElement(
                         "ul",
                         {className: "checkbox-group"},
-                        BDV2.react.createElement(V2Components.Checkbox, {id: "live-update", text: "Live Update", onChange: this.onChange, checked: settingsCookie["bda-css-0"]})
+                        BDV2.react.createElement(V2Components.Checkbox, {id: "live-update", text: "Acutalisation en temps réel", onChange: this.onChange, checked: settingsCookie["bda-css-0"]})
                     ),
                     BDV2.react.createElement(
                         "div",
@@ -3712,7 +3712,7 @@ class V2C_PluginCard extends BDV2.reactComponent {
                         BDV2.react.createElement("span", {className: "bda-author"}, author)
                     ),
                     BDV2.react.createElement("div", {className: "bda-controls"},
-                        !settingsCookie["fork-ps-5"] && BDV2.react.createElement(V2Components.TooltipWrap(V2Components.ReloadIcon, {color: "black", side: "top", text: "Reload"}), {className: "bd-reload-card", onClick: this.reload}),
+                        !settingsCookie["fork-ps-5"] && BDV2.react.createElement(V2Components.TooltipWrap(V2Components.ReloadIcon, {color: "black", side: "top", text: "Recharger"}), {className: "bd-reload-card", onClick: this.reload}),
                         BDV2.react.createElement("label", {className: "ui-switch-wrapper ui-flex-child", style: {flex: "0 0 auto"}},
                             BDV2.react.createElement("input", {checked: this.state.checked, onChange: this.onChange, className: "ui-switch-checkbox", type: "checkbox"}),
                             BDV2.react.createElement("div", {className: this.state.checked ? "ui-switch checked" : "ui-switch"})
@@ -4251,8 +4251,8 @@ class V2_SettingsPanel {
     get emoteComponent() {
         return BDV2.react.createElement(V2Components.Scroller, {
             contentColumn: true, fade: true, dark: true, children: [
-                BDV2.react.createElement(V2Components.SettingsPanel, {key: "espanel", title: "Emote Settings", onChange: this.onChange, settings: this.emoteSettings, button: {
-                    title: "Clear Emote Cache",
+                BDV2.react.createElement(V2Components.SettingsPanel, {key: "espanel", title: "Paramètres des émotes", onChange: this.onChange, settings: this.emoteSettings, button: {
+                    title: "Supprimer le cache des émotes",
                     onClick: () => { emoteModule.clearEmoteData(); emoteModule.init(); quickEmoteMenu.init(); }
                 }}),
                 BDV2.react.createElement(V2Components.Tools, {key: "tools"})
